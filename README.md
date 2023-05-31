@@ -7,7 +7,9 @@ Integrantes:
 
 ## Sobre el proyecto
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+    <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a>
+</p>
 
 Proyecto PHP construido con el popular framework Laravel, diseñado para crear un backend, el cual se encarga de manejar la logica y la gestion de datos detras de escena.
 
@@ -20,7 +22,17 @@ Proyecto PHP construido con el popular framework Laravel, diseñado para crear u
 # Primeros pasos
 
 ### 1. Instalaciones requeridas:
-    1.1 PHP 8
+    1.1 PHP 8: 
+    ```bash
+        apt-get update
+        apt-get install --no-install-recommends php8.1
+        apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath
+
+        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+        php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+        php composer-setup.php
+        php -r "unlink('composer-setup.php');"   
+    ```
     1.2 [Composer] (https://getcomposer.org/download/)
     1.3 MySQL: `apt-get install php-mysql`
 
