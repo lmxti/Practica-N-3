@@ -37,34 +37,43 @@ class PerroController extends Controller
     public function viewPerro(PerroRequest $request){
         try {
             $perro = Perro::find($request->id);
-            return response()->json([
-                "message" => "Perro encontrado correctamente",
-                "perro" => $perro
-            ], Response::HTTP_OK);
+            if ($perro) {
+                return response()->json([
+                    "message" => "Perro encontrado correctamente",
+                    "perro" => $perro
+                ], Response::HTTP_OK); 
+            }else {
+                throw new Exception("El perro de id: $request->id no se encuentra en la base de datos");
+            }
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
-                "message" => "Error al encontrar el perro",
+                "message" => "Error al encontrar perro",
                 "error" => $e->getMessage()
             ], Response::HTTP_BAD_REQUEST);
         }
     }
 
     public function updatePerro(PerroRequest $request){
+
         try {
             $perro = Perro::find($request->id);
-            $perro->name = $request->name;
-            $perro->url = $request->url;
-            $perro->descripcion = $request->descripcion;
-            $perro->save();
-            return response()->json([
-                "message" => "Perro actualizado correctamente",
-                "perro" => $perro
-            ], Response::HTTP_OK);
+            if ($perro) {
+                $perro->name = $request->name;
+                $perro->url = $request->url;
+                $perro->descripcion = $request->descripcion;
+                $perro->save();
+                return response()->json([
+                    "message" => "Perro actualizado correctamente",
+                    "perro" => $perro
+                ], Response::HTTP_OK);
+            }else {
+                throw new Exception("El perro de id: $request->id no se encuentra en la base de datos");
+            }
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
-                "message" => "Error al actualizar el perro",
+                "message" => "Error al actualizar perro",
                 "error" => $e->getMessage()
             ], Response::HTTP_BAD_REQUEST);
         }
@@ -72,12 +81,15 @@ class PerroController extends Controller
 
     public function deletePerro(PerroRequest $request){
         try {
-            $perro = Perro::find($request->id);
-            $perro->delete();
-            return response()->json([
-                "message" => "Perro eliminado correctamente",
-                "perro" => $perro
-            ], Response::HTTP_OK);
+            if (Perro::find($request->id)) {
+                $perro->delete();
+                return response()->json([
+                    "message" => "Perro eliminado correctamente",
+                    "perro" => $perro
+                ], Response::HTTP_OK);
+            } else {
+                throw new Exception("El perro de id: $request->id no se encuentra en la base de datos");
+            }
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
