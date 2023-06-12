@@ -35,4 +35,5 @@ Route::prefix('/interaccion')->group(function () {
     Route::get('/view', [InteraccionController::class, 'viewInteraccion']);
     Route::put('/update', [InteraccionController::class, 'updateInteraccion']);
     Route::delete('/delete', [InteraccionController::class, 'deleteInteraccion']);
+    Route::get('/viewAll', [InteraccionController::class, 'viewAllInteraccion']);
 });

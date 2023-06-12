@@ -6,7 +6,7 @@ Integrantes:
 
 # Rutas del proyecto
 
-# Rutas para el modelo Perro
+## Rutas para el modelo Perro
 
 - Crear un perro:
 La ruta para crear un perro es http://127.0.0.1:8000/api/perro/create y el cuerpo en formato json de la solicitud (POST) debe llevar los siguientes datos:
@@ -50,9 +50,51 @@ La ruta para eliminar un perro de la base de datos es: http://127.0.0.1:8000/api
 ```
 
 - Para ver todos los perros existentes:
-La ruta para visualizar todos los perros de la base de datos es: http://127.0.0.1:8000/api/perro/viewAll y *no es necesario un json con datos*.
+La ruta para visualizar todos los perros de la base de datos es: http://127.0.0.1:8000/api/perro/viewAll y **no es necesario un json con datos**.
 
+## Rutas para el modelo Interaccion
 
+- Para crear una interaccion:
+La ruta para crear una interaccion entre perros es http://127.0.0.1:8000/api/interaccion/create y en el cuerpo json debe tener los siguientes datos (A: Aceptado, R: Rechazado).
+```json
+{
+	"idPerroInteresado": 3,
+	"idPerroCandidato": 4,
+	"preferencia": "A"
+}
+```
+
+- Para visualizar una interaccion de un perro (ID de Registro):
+La ruta para visualizar una interaccion es: http://27.0.0.1:8000/api/interaccion/view y en el cuerpo json se debe incluir unicamente la id de la interaccion a visualizar, por ejemplo para ver la interaccion del registro de id 2:
+```json
+{
+	"id": 2
+}
+```
+
+- Para actualizar valores de un registro de interaccion:
+La ruta para actualizar un registro de una interaccion es: http://127.0.0.1:8000/api/interaccion/update y en el cuerpo json debe incluir la id del registro de interaccion a modificar, y los valores no se modificaran y los valores que si se modificaron,
+
+```json
+{
+	 	"id": 3,
+		"idPerroInteresado": 3,
+		"idPerroCandidato": 4,
+		"preferencia": "A"
+}
+```
+
+- Para eliminar una interaccion (Por ID de registro de interaccion):
+La ruta para eliminar el registro de una interaccion es: http://127.0.0.1:8000/api/interaccion/delete y **en el cuerpo se debe incluir unicamente la ID del registro que se eliminara, no confundir con los id de los perros.**
+
+```json
+{
+	"id": 3
+}
+```
+
+- Para ver todas las interacciones existentes:
+La ruta para visualizar todos los registros de interacciones en la base de datos es: http://127.0.0.1:8000/api/interaccion/viewAll y no es necesario mandar un json en la solicitud.
 
 
 ## Sobre el proyecto

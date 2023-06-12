@@ -39,6 +39,16 @@ class InteraccionRequest extends FormRequest
                 'idPerroCandidato' => 'required|integer',
                 'preferencia' => 'required|alpha'
             ];
+        } elseif ($this->isMethod('delete')) {
+            // Reglas de valicacion para solicitud DELETE (delete)
+            return [
+                'id' => 'required|integer'
+            ];
+        } elseif ($this->isMethod('get')) {
+            // Reglas de valicacion para solicitud GET (view)
+            return [
+                'id' => 'required|integer'
+            ];
         }
 
 

@@ -87,4 +87,20 @@ class InteraccionController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function viewAllInteraccion(){
+        try {
+            $interacciones = Interaccion::all();
+            return response()->json([
+                "message" => "Interacciones encontradas correctamente",
+                "interacciones" => $interacciones
+            ], Response::HTTP_OK);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                "message" => "Error al encontrar las interacciones",
+                "error" => $e->getMessage()
+            ], Response::HTTP_BAD_REQUEST);
+        }
+    }
 }
