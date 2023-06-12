@@ -1,8 +1,58 @@
-## Taller Avanzado de Desarrollo Web - Evaluacion Practica N 3
+# Taller Avanzado de Desarrollo Web - Evaluacion Practica N 3
 
 Integrantes:
 - Domingo Vega (ICINF).
 - Matias San Martin (ICINF).
+
+# Rutas del proyecto
+
+# Rutas para el modelo Perro
+
+- Crear un perro:
+La ruta para crear un perro es http://127.0.0.1:8000/api/perro/create y el cuerpo en formato json de la solicitud (POST) debe llevar los siguientes datos:
+
+```json
+{
+	"name": "nombrePerro",
+	"url":"urlFotoPerro",
+	"descripcion": "descripcionPerro"
+}
+```
+
+- Para buscar y ver un perro (Por ID):
+La ruta para visualizar un perro es http://127.0.0.1:8000/api/perro/view y el cuerpo de en formato json lleve llevar por dato el `id` del perro a visualizar, en este ejemplo se visualiza el perro de id "6".
+
+```json
+{
+	"id": 6
+}
+```
+
+- Para modificar datos de un perro (Por ID):
+La ruta para modificar los datos de un perro es http://127.0.0.1:8000/api/perro/update y en el cuerpo del json actualmente se deben incorporar todos los datos del perro, los que se conservaran y los que se modificaran, esta en proceso de mejora aun, un ejemplo para actualizar los registros del perro de id "1":
+```json
+{
+	"id": 1,
+	"name": "PerroActualizado",
+	"url": "urlActualizada",
+	"descripcion":"descripcionActualizada"
+}
+```
+
+- Para eliminar un perro (Por ID):
+La ruta para eliminar un perro de la base de datos es: http://127.0.0.1:8000/api/perro/delete y en el cuerpo del json solo debe ir la id del perro a eliminar, ejemplo para eliminar el perro de id 12
+
+
+```json
+{
+	"id": 12
+}
+```
+
+- Para ver todos los perros existentes:
+La ruta para visualizar todos los perros de la base de datos es: http://127.0.0.1:8000/api/perro/viewAll y *no es necesario un json con datos*.
+
+
 
 
 ## Sobre el proyecto
@@ -38,7 +88,7 @@ Proyecto PHP construido con el popular framework Laravel, diseñado para crear u
 
 ### 2. Creacion de proyecto (Laravel):
 
-Para crear el proyecto se utiliza `composer create-project laravel/laravel` 
+Para crear el proyecto se utiliza `composer create-project laravel/laravel nombre_proyecto` 
 
 ### 3. Generar clave de cifrado unica para el proyecto:
 

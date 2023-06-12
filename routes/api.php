@@ -27,6 +27,7 @@ Route::prefix('/perro')->group(function () {
     Route::get('/view', [PerroController::class, 'viewPerro']);
     Route::put('/update', [PerroController::class, 'updatePerro']);
     Route::delete('/delete', [PerroController::class, 'deletePerro']);
+    Route::get('/viewAll', [PerroController::class, 'viewAllPerro']);
 });
 
 Route::prefix('/interaccion')->group(function () {

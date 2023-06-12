@@ -23,13 +23,27 @@ class InteraccionRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules(): array
-    {
-        return [
-            'idPerroInteresado' => 'required|integer',
-            'idPerroCandidato' => 'required|integer',
-            'preferencia' => 'required|alpha'
-        ];
+    public function rules(): array{
+
+        if ($this->isMethod('post')) {
+            // Reglas de valicacion para solicitud POST (create)
+            return [
+                'idPerroInteresado' => 'required|integer',
+                'idPerroCandidato' => 'required|integer',
+                'preferencia' => 'required|alpha'
+            ];
+        } elseif ($this->isMethod('put')) {
+            // Reglas de validacion para solicitud PUT (update)
+            return [
+                'idPerroInteresado' => 'required|integer',
+                'idPerroCandidato' => 'required|integer',
+                'preferencia' => 'required|alpha'
+            ];
+        }
+
+
+
+
     }
 
     public function messages(){

@@ -78,10 +78,11 @@ class PerroController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
-
+    
     public function deletePerro(PerroRequest $request){
         try {
-            if (Perro::find($request->id)) {
+            $perro = Perro::find($request->id);
+            if ($perro) {
                 $perro->delete();
                 return response()->json([
                     "message" => "Perro eliminado correctamente",
@@ -93,7 +94,24 @@ class PerroController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
-                "message" => "Error al eliminar el perro",
+                "message" => "Error al eliminar el perro de id $request->id",
+                "error" => $e->getMessage()
+            ], Response::HTTP_BAD_REQUEST);
+        }
+    }
+    
+
+    public function viewAllPerro(Request $request){
+        try {
+            $perro = Perro::all();
+            return response()->json([
+                "message" => "Perros encontrados correctamente",
+                "perro" => $perro
+            ], Response::HTTP_OK);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                "message" => "Error al encontrar perros",
                 "error" => $e->getMessage()
             ], Response::HTTP_BAD_REQUEST);
         }
